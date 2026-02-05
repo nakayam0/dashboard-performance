@@ -258,3 +258,13 @@
 .ranking-page .ranking-page__banner,
 .ranking-page .ranking-page__grid,
 .ranking-page .ranking-page__card { box-sizing: border-box; }
+
+.score-ok {
+  color: #047857;
+  font-weight: 800;
+}
+
+.score-over {
+  color: #dc2626;
+  font-weight: 800;
+}

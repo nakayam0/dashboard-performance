@@ -284,33 +284,44 @@ function handleLegendClick(key) {
                     <th className="col-center">Performance Score</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {ranking.length === 0
-                    ? Array.from({ length: 12 }).map((_, i) => (
-                        <tr key={i}>
-                          <td className="td-id">{i + 1}</td>
-                          <td className="td-name">&nbsp;</td>
-                          <td className="col-center">&nbsp;</td>
-                          <td className="col-center">&nbsp;</td>
-                          <td className="col-center">&nbsp;</td>
-                          <td className="col-center">&nbsp;</td>
-                          <td className="col-center">&nbsp;</td>
-                          <td className="col-center score">&nbsp;</td>
-                        </tr>
-                      ))
-                    : ranking.map((r, i) => (
-                        <tr key={i}>
-                          <td className="td-id">{i + 1}</td>
-                          <td className="td-name">{r.userName}</td>
-                          <td className="col-center">{r.totalIssues}</td>
-                          <td className="col-center">{formatNumber(r.rqs)}%</td>
-                          <td className="col-center">{formatNumber(r.wps)}%</td>
-                          <td className="col-center">{formatNumber(r.fps)}%</td>
-                          <td className="col-center">{formatNumber(r.tus)}%</td>
-                          <td className="col-center score">{formatNumber(r.performance)}</td>
-                        </tr>
-                      ))}
-                </tbody>
+<tbody>
+  {ranking.length === 0
+    ? Array.from({ length: 12 }).map((_, i) => (
+        <tr key={i}>
+          <td className="td-id">{i + 1}</td>
+          <td className="td-name">&nbsp;</td>
+          <td className="col-center">&nbsp;</td>
+          <td className="col-center">&nbsp;</td>
+          <td className="col-center">&nbsp;</td>
+          <td className="col-center">&nbsp;</td>
+          <td className="col-center">&nbsp;</td>
+          <td className="col-center score">&nbsp;</td>
+        </tr>
+      ))
+    : ranking.map((r, i) => (
+        <tr key={i}>
+          <td className="td-id">{i + 1}</td>
+          <td className="td-name">{r.userName}</td>
+          <td className="col-center">{r.totalIssues}</td>
+          <td className="col-center">{formatNumber(r.rqs)}%</td>
+          <td className="col-center">{formatNumber(r.wps)}%</td>
+          <td className="col-center">{formatNumber(r.fps)}%</td>
+          <td className="col-center">{formatNumber(r.tus)}%</td>
+
+          {/* PERFORMANCE SCORE */}
+          <td
+            className="col-center score"
+            style={{
+              color: r.tus > 100 ? "#dc2626" : "#047857",
+              fontWeight: 700
+            }}
+          >
+            {formatNumber(r.performance)}
+          </td>
+        </tr>
+      ))}
+</tbody>
+
               </table>
             </div>
           </div>
