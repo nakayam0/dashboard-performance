@@ -1,0 +1,139 @@
+/* src/styles/users.css */
+
+.users-header h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;   /* ⬅️ sejajar dengan tepi tabel */
+  margin-bottom: 8px;      /* ⬅️ rapat ke tabel */
+}
+
+/* pill-like filters */
+.users-filter {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  min-width: 140px;
+}
+
+/* small action buttons */
+.filter-apply,
+.filter-clear,
+.back-btn {
+  padding: 8px 12px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.filter-apply {
+  background: #1d4ed8;
+  color: white;
+}
+
+.filter-clear {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* back button like desain */
+.back-btn {
+  background: #15305f;
+  color: white;
+  border-radius: 16px;
+}
+
+/* table visual */
+.users-table thead th {
+  background: #6f8fbf;         /* ⬅️ biru lebih soft */
+  color: #ffffff;
+  padding: 14px 14px;          /* ⬅️ lebih tinggi */
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  font-size: 13.5px;
+}
+
+
+.users-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14.5px;           /* ⬅️ LEBIH JELAS */
+  color: #1f2937;
+}
+
+.users-table tbody td {
+  padding: 14px 14px;          /* ⬅️ ROW JADI BESAR */
+  background: #eef5fd;         /* ⬅️ lembut */
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.users-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.users-table tbody tr:hover td {
+  background: #e0edff;
+}
+
+.users-table tbody tr {
+  height: 48px;                /* ⬅️ tinggi baris */
+}
+
+
+.users-table tbody td:first-child {
+  background: #b6c9e6;         /* ⬅️ tidak terlalu gelap */
+  text-align: center;
+  font-weight: 700;
+  color: #0f172a;
+  width: 60px;
+}
+
+
+/* adjust table wrapper padding */
+.users-table-wrapper {
+  max-height: 520px;           /* ⬅️ LEBIH TINGGI */
+  padding: 12px;               /* ⬅️ NAFAS */
+  border-radius: 18px;
+  background: #ffffff;
+  overflow-y: auto;        /* ⬅️ SCROLL HIDUP */
+  overflow-x: hidden;
+}
+
+.users-table thead th:first-child {
+  border-top-left-radius: 18px;
+}
+
+.users-table thead th:last-child {
+  border-top-right-radius: 18px;
+}
+
+.users-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 18px;
+}
+
+.users-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 18px;
+}
+
+.users-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 4px;       /* ⬅️ sejajar border tabel */
+}
+
+.users-title-icon {
+  width: 32px;             /* ⬅️ LEBIH BESAR */
+  height: 32px;
+  object-fit: contain;
+}

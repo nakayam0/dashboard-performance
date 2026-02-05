@@ -1,0 +1,51 @@
+.modern-select {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+}
+
+.modern-select-control {
+  background: #f3f4f6;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modern-select-control:hover {
+  background: #e5e7eb;
+}
+
+.arrow {
+  margin-left: 10px;
+}
+
+/* dropdown */
+.modern-select-menu {
+  position: absolute;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  margin-top: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+/* item */
+.modern-select-item {
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.modern-select-item:hover {
+  background: #eef2ff;
+}
+
+.modern-select-item.active {
+  background: #2563eb;
+  color: white;
+}

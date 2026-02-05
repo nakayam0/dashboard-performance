@@ -1,0 +1,300 @@
+/* ==============================
+   RACE SUMMARY PAGE (PIXEL-FOCUSED)
+============================== */
+
+:root{
+  --bg: #f1f3f4;
+  --card: #fff;
+  --accent: #1f78b4;
+  --muted: #6b7280;
+  --pill-shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+.race-summary-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 20px;
+  align-items: stretch;
+  height: calc(100vh - 140px);
+  min-height: 0;       /* penting untuk flex/grid children */
+}
+
+.race-summary-page{
+  padding: 24px;
+  background: var(--bg);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+/* Header pill */
+.race-summary-header{
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px 28px;
+  font-weight: 800;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  box-shadow: var(--pill-shadow);
+  color: #111827;
+  gap: 12px;
+}
+
+.header-actions{ 
+  display:flex; 
+  gap:10px; 
+  align-items:center; 
+}
+
+.icon-btn {
+  --size: 40px;
+  width: var(--size);
+  height: var(--size);
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #fff;                         /* white circle */
+  border: 1px solid rgba(31,120,180,0.12); /* soft border */
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(.2,.9,.2,1), box-shadow 160ms;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  padding: 0;
+}
+
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  fill: none;
+  display: block;
+}
+
+.icon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(15,23,42,0.08);
+  background: linear-gradient(180deg, rgba(31,120,180,0.03), rgba(31,120,180,0.01));
+}
+
+.icon-btn:active { transform: translateY(-1px) scale(.995); }
+.icon-btn:focus { outline: none; box-shadow: 0 0 0 6px rgba(31,120,180,0.10); }
+
+.icon-btn--primary {
+  background: var(--accent);
+  border: none;
+}
+
+.icon-btn--primary svg { stroke: #fff; }
+
+.icon-btn--ghost {
+  background: #fff;
+  border: 1px solid rgba(31,120,180,0.12);
+}
+
+/* optional micro-badge (useful for spinner state) */
+.icon-btn .badge {
+  position: relative; /* badge can be absolute if you add position wrapper */
+}
+
+/* Card base */
+.race-summary-card{
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: none;
+  /* ubah: jangan paksa min-height 520, biarkan grid mengatur */
+  min-height: 0;       /* ← WAJIB */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-left {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;      /* ← WAJIB */
+}
+
+/* left card specifics */
+.card-left .card-heading h3{
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* TABLE WRAPPER (scrollable) */
+.table-wrapper{
+  margin-top: 8px;
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1 1 auto;     /* ambil ruang yang tersisa */
+  min-height: 0;      /* supaya tidak memaksa konten keluar */
+  border: 1px solid rgba(31,120,180,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+}
+
+.race-summary-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #1f78b4; /* WAJIB, biar tidak transparan */
+}
+/* scrollbar halus */
+.table-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 8px;
+}
+
+/* Table layout mimicking mockup */
+.race-summary-table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* header row */
+.race-summary-table thead tr th{
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 14px;
+  font-weight: 700;
+  text-align: left;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.race-summary-table thead tr th.col-id{
+  width: 56px;
+  text-align:center;
+}
+
+/* first column styling (id narrow blue block) */
+.race-summary-table tbody tr td.col-id-cell{
+  width: 56px;
+  text-align:center;
+  background: rgba(29,78,137,0.12);
+  color: #0b2b4a;
+  font-weight: 700;
+  padding: 10px 8px;
+  vertical-align: middle;
+}
+
+/* normal cell */
+.race-summary-table tbody tr td{
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(29,78,137,0.04);
+  vertical-align: middle;
+  color: #1f2937;
+}
+
+/* zebra subtle */
+.race-summary-table tbody tr:nth-child(even) td:not(.col-id-cell){
+  background: rgba(29,78,137,0.03);
+}
+
+/* hover & selected */
+.race-summary-table tbody tr:hover td{ background: rgba(96,165,250,0.14); cursor: pointer; }
+.race-summary-table tbody tr.selected-row td{ background: rgba(59,130,246,0.18); font-weight:700; }
+
+.card-right {
+  padding-right: 12px;
+  overflow: visible;
+  min-height: 0;      /* ← WAJIB supaya child flex bisa menghitung tinggi */
+  display: flex;
+  flex-direction: column;
+}
+
+/* RIGHT: chart area styling */
+.card-right .chart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.chart-title{ font-weight:700; font-size:16px; color:#111827; margin-bottom:4px; }
+.chart-subtitle{ font-size:12px; color:var(--muted); }
+
+/* pill race-id input & apply */
+.race-id-pill{
+  border-radius: 999px;
+  border:1px solid #e5e7eb;
+  padding:8px 14px;
+  outline:none;
+  width:110px;
+  font-size:13px;
+}
+.apply-btn{
+  margin-left:8px;
+  background:#1f78b4;
+  color:white;
+  border:none;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* legend centered row */
+.chart-legend{ margin-top:12px; display:flex; justify-content:center; }
+.legend-row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.legend-item{ display:flex; gap:8px; align-items:center; font-size:13px; color:#374151; }
+.legend-dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+.legend-initiated{ background:#bfdbfe; }
+.legend-todo{ background:#60a5fa; }
+.legend-hold{ background:#fb923c; }
+.legend-finished{ background:#d5e030; }
+.legend-achieved{ background:#10b981; }
+.legend-failed{ background:#ef4444; }
+.legend-canceled{ background:#d1d5db; }
+
+/* chart container to match height in mockup */
+.card-right .chart-area{ margin-top:14px; }
+
+.chart-area {
+  flex: 1 1 auto;     /* isi ruang tersisa */
+  min-height: 0;      /* penting agar responsive container tidak collapse */
+  margin-top: 12px;
+  padding-right: 16px;
+  height: auto;
+}
+
+
+
+/* footer */
+.chart-footer{ margin-top:12px; color:var(--muted); font-size:13px; }
+
+/* small responsive tweaks */
+@media (max-width: 1024px){
+  .race-summary-grid{ grid-template-columns: 1fr; }
+  .card-right{ order: 2; }
+  .card-left{ order: 1; }
+}
+
+.card-right {
+  padding-right: 12px;   /* ⬅️ ruang napas chart */
+  overflow: visible;     /* ⬅️ JANGAN hidden */
+}
+
+.chart-area {
+  flex: 1;                /* ⬅️ INI KUNCI UTAMA */
+  min-height: 300px;      /* safety */
+  margin-top: 12px;
+  padding-right: 16px;
+}
+.legend-row {
+  display: flex;
+  flex-direction: row;   /* ⬅️ paksa horizontal */
+  gap: 12px;
+  align-items: center;
+  flex-wrap: nowrap;     /* ⬅️ jangan turun ke bawah */
+  overflow-x: auto;      /* kalau kepanjangan, scroll */
+}
+.legend-item {
+  white-space: nowrap;
+}

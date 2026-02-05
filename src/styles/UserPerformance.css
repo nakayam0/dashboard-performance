@@ -1,0 +1,294 @@
+/* =========================
+   ROOT & LAYOUT
+========================= */
+.dashboard-root {
+  min-height: 100vh;
+  background: #f2f2f2;
+  padding: 16px 24px;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* wrapper utama */
+.dashboard-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   HEADER
+========================= */
+.dashboard-header {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-refresh {
+  border: 1px solid #2563eb;
+  background: #ffffff;
+  color: #2563eb;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.btn-back {
+  background: #1e3a8a;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* =========================
+   GRID
+========================= */
+/* beri sedikit padding kanan agar scrollbar tidak menutupi konten */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 10px;
+  width: 100%;
+  padding-right: 8px;
+}
+
+/* penting: allow children to shrink (menghindari overflow yang memotong) */
+.left-panel,
+
+.right-panel {
+  padding: 16px;            /* beri ruang dalam card */
+  box-sizing: border-box;
+  margin-right: 20px;    /* beri ruang agar tidak terlalu mepet ke grid gap */
+}
+
+.card,
+.detail-box,
+.table-wrapper,
+.detail-content {
+  min-width: 0;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+}
+
+/* =========================
+   LEFT PANEL TABLE
+========================= */
+.left-panel h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.table-wrapper {
+  max-height: 420px;
+  overflow-y: auto;
+  border-radius: 12px;
+}
+
+.performance-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+
+.performance-table thead th {
+  position: sticky;
+  top: 0;
+  background: #c9d6e4;
+  padding: 10px;
+  text-align: center;
+}
+
+.performance-table th,
+.performance-table td {
+  padding: 10px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.performance-table tbody tr {
+  background: #f8fbff;
+  cursor: pointer;
+}
+
+.performance-table tbody tr:hover {
+  background: #eef6ff;
+}
+
+.performance-table tbody tr.active {
+  background: linear-gradient(90deg, #dceeff, #c7dbf7);
+}
+
+.performance-table .col-id {
+  width: 40px;
+  font-weight: 700;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+.right-panel-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.daily-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* =========================
+   DONUT + DETAIL GRID
+========================= */
+.donut-container {
+  display: grid;
+  /* sedikit adjust supaya detail punya ruang yang cukup */
+  grid-template-columns: 40% 60%;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+/* =========================
+   DONUT AREA
+========================= */
+.donut-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* pastikan chart selalu punya ruang sehingga Recharts tidak error */
+  min-height: 360px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* legend wrap tapi tidak merusak layout */
+.recharts-default-legend {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   DETAIL PANEL
+========================= */
+.detail-box {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* gunakan gap & allow wrap agar date tidak terpotong */
+.detail-header {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 8px;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+}
+
+/* buat date tidak nge-wrap ke baris baru dan tidak terpotong */
+.detail-header .date {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin-left: 30px;
+  justify-content: left;
+}
+
+.detail-header .left {
+  flex: 1 1 auto;
+  min-width: 0; /* PENTING supaya anak flex bisa shrink */
+  overflow: hidden;
+}
+
+/* beri padding agar isi detail tidak berada tepat di tepi */
+.detail-content {
+  border: 1px solid #e6f7ff;
+  border-radius: 12px;
+  padding: 14px;
+  max-height: 420px;
+  overflow-y: auto;
+  background: #fff;
+  box-sizing: border-box;
+  margin-right: 20px;
+}
+
+.activity-item {
+  margin-bottom: 12px;
+}
+
+.activity-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.activity-meta {
+  font-size: 12px;
+  color: #374151;
+  margin-top: 4px;
+}
+
+.activity-comment {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 6px;
+}
+
+/* =========================
+   DAY NAV
+========================= */
+.day-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  gap: 16px;
+}
+
+.day-nav button {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* =========================
+   HELPERS
+========================= */
+.small-info { font-size: 13px; color: #6b7280; }
+.error-info { color: #b91c1c; font-size: 13px; }
+
+

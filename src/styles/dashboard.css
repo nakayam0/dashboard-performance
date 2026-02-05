@@ -1,0 +1,599 @@
+/* =========================
+   BASE & GLOBAL
+========================= */
+body {
+  background: #f2f2f2;
+}
+
+.dashboard-page {
+  padding: 24px;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 8px 22px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #eef2ff;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.users-icon img {
+  width: 170px;
+  max-width: 100%;
+}
+
+/* =========================
+   GRID DASHBOARD (BALIK ASLI)
+========================= */
+.dashboard-grid-top {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.dashboard-grid-bottom {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 10px;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+
+.dashboard-grid-bottom > * {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking-table-wrapper {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+
+.dashboard-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* =========================
+   CARD UMUM
+========================= */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* =========================
+   USERS CARD
+========================= */
+.total-users {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* ⬅ center horizontal */
+}
+.users-main {
+  margin-top: 12px;
+}
+
+.users-number {
+  font-size: 60px;
+  font-weight: bold;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.users-text {
+  font-size: 25px;      /* tetap */
+  font-weight: bold;
+  color: #555;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.users-label {
+  font-size: 16px;
+  color: #555;
+}
+
+.users-icons {
+  margin-top: 12px;
+  font-size: 20px;
+}
+
+/* =========================
+   RANKING PERFORMANCE (BALIK)
+========================= */
+.ranking-search {
+  width: 90%;
+  padding: 8px 12px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.ranking-table {
+  margin-top: 12px;
+  font-size: 12px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.ranking-header,
+.ranking-row {
+  display: grid;
+  grid-template-columns: 28px 1.4fr 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.ranking-header {
+  font-weight: bold;
+  color: #374151;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ranking-row {
+  background: #e0ecff;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+.rank-name {
+  font-weight: 500;
+}
+
+.rank-score {
+  font-weight: bold;
+  color: #1d4ed8;
+}
+
+/* =========================
+   RACE SUMMARY (REVISI HALUS)
+========================= */
+.race-summary.clickable {
+  cursor: pointer;
+}
+
+.race-chart {
+  position: relative;
+}
+
+.race-item {
+  margin-bottom: 4px; /* ⬅ DIRAPATIN DIKIT */
+}
+
+.race-item:last-child {
+  margin-bottom: 0;
+}
+
+.race-item-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+.race-date {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* BAR */
+.race-bar {
+  position: relative;
+  width: 100%;
+  height: 16px; /* ⬅ SEDIKIT LEBIH TEBAL */
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.race-bar-open,
+.race-bar-closed {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+.race-bar-value {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.race-bar-open {
+  background: #fb923c;
+}
+
+.race-bar-closed {
+  background: #22c55e;
+}
+
+/* ===== FIX CHART CONTAINER ===== */
+.card.status-summary,
+.card.daily-performance {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ===== FIX CIRCLE & DONUT ===== */
+.circle-placeholder {
+  width: 180px;
+  height: 180px;
+  margin: 24px auto;
+  border-radius: 50%;
+  background: conic-gradient(
+    #f87171 0deg 60deg,
+    #60a5fa 60deg 180deg,
+    #34d399 180deg 300deg,
+    #fbbf24 300deg 360deg
+  );
+}
+
+.grid-placeholder {
+  display: block;
+}
+
+.card.status-summary .circle-placeholder,
+.card.daily-performance .circle-placeholder {
+  margin: auto;
+}
+
+/* =========================
+   TOTAL USERS CARD - INTERAKSI
+========================= */
+.total-users.clickable {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.total-users.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   TOTAL USERS - HEADER & REFRESH
+========================= */
+.total-users .card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-users .card-header span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.refresh-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.refresh-btn:hover {
+  background: #e5e7eb;
+}
+
+.refresh-btn svg {
+  font-size: 16px;
+  color: #1d4ed8;
+}
+
+/* animasi reload */
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* =========================
+   USERS PAGE
+========================= */
+.users-page {
+  padding: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.users-page h2 {
+  margin-bottom: 12px;
+}
+
+/* =========================
+   USERS FILTER
+========================= */
+.users-filter {
+  padding: 8px 12px;
+  width: 280px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   USERS TABLE (SCROLLABLE)
+========================= */
+.users-table-wrapper {
+  max-height: 420px;          /* ⬅ tinggi scroll */
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+/* scrollbar halus */
+.users-table-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.users-table-wrapper::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 8px;
+}
+
+/* =========================
+   USERS TABLE
+========================= */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.users-table thead {
+  position: sticky;
+  top: 0;
+  background: #f9fafb;
+  z-index: 1;
+}
+
+.users-table th {
+  padding: 10px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.users-table td {
+  padding: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.users-table tbody tr:hover {
+  background: #eef2ff;
+}
+/* =========================
+   OPEN DETAIL BUTTON
+========================= */
+
+.daily-detail-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn-open-detail {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+
+  background: #98a7d1;
+  color: rgb(15, 12, 24);
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-open-detail:hover {
+  background: #d9e3ff;
+}
+
+
+.card.ranking .ranking-header,
+.card.ranking .ranking-row {
+  display: grid;
+
+  /* Lebar kolom dibuat konsisten */
+  grid-template-columns:
+    40px    /* No */
+    1.6fr   /* Nama */
+    60px    /* Issue */
+    90px    /* Hour */
+    90px    /* TUS */
+    100px;  /* Score */
+
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+
+
+.ranking-header { font-weight: 600; color: #444; background: rgba(0,0,0,0.03); border-radius: 6px; }
+.ranking-row { background: rgba(30,110,220,0.03); border-radius: 6px; margin-top: 6px; }
+.ranking-row:hover { background: rgba(30,110,220,0.07); }
+.ranking-search { width: 100%; padding: 6px 8px; border-radius: 8px; }
+.btn-small { padding: 6px 10px; border-radius: 8px; background: #3b82f6; color: white; border: none; cursor: pointer; }
+
+
+/* modern dropdown */
+.modern-select {
+  position: relative;
+  width: 100%;
+}
+
+.modern-select select {
+  width: 100%;
+  padding: 8px 36px 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #d5dbe3;
+  background: #fff;
+  font-size: 13px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.modern-select select:hover {
+  border-color: #1f78b4;
+}
+
+.modern-select select:focus {
+  outline: none;
+  border-color: #1f78b4;
+  box-shadow: 0 0 0 2px rgba(31,120,180,0.15);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 12px;
+  color: #666;
+}
+
+.dropdown-menu {
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #d5dbe3;
+
+  /* ✅ batasi tinggi */
+  max-height: 180px;
+
+  /* ✅ scroll di dalam */
+  overflow-y: auto;
+
+  margin-top: 4px;
+  z-index: 20;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: #c8d1dc;
+  border-radius: 6px;
+}
+
+.card.ranking {
+  overflow: visible;
+}
+
+.race-dropdown {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.race-selected {
+  border: 1px solid #d5dbe3;
+  border-radius: 10px;
+  padding: 8px 12px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.race-selected:hover {
+  border-color: #1f78b4;
+}
+
+.race-menu {
+  position: absolute;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #d5dbe3;
+  max-height: 180px;
+  overflow-y: auto;
+  margin-top: 4px;
+  z-index: 1000;
+}
+
+.race-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.race-item:hover {
+  background: #eef2ff;
+}
+
+
+.card.clickable {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.ranking-body {
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
